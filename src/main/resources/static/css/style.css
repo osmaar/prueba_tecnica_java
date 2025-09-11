@@ -1,0 +1,51 @@
+body {
+    font-family: Arial,
+    sans-serif; margin: 40px;
+    background-color: #f4f4f9;
+}
+.container {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+.results-table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 20px;
+}
+.results-table th, .results-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+.results-table th {
+    background-color: #007bff;
+    color: white;
+}
+.message {
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+}
+.success {
+    background-color: #d4edda;
+    color: #155724;
+}
+.error {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+button:hover {
+    background-color: #0056b3;
+}
