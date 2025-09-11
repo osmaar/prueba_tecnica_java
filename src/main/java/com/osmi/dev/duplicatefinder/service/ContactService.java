@@ -89,20 +89,20 @@ public class ContactService {
 
     /**
      * Método de utilidad para leer el valor de una celda como String,
-     * sin importar si es de tipo numérico o texto.
+     * de forma segura, sin importar si la celda es nula, de tipo numérico o texto.
      */
     private String getCellValueAsString(Cell cell) {
+        // 1. Si la celda es nula, devolvemos una cadena vacía para evitar errores.
         if (cell == null) {
-            return null;
+            return "";
         }
-        switch (cell.getCellType()) {
-            case STRING:
-                return cell.getStringCellValue();
-            case NUMERIC:
-                // Tratar el ID numérico como texto sin decimales
-                return String.valueOf((long) cell.getNumericCellValue());
-            default:
-                return null;
-        }
+
+        // 2. Leemos el valor según el tipo de celda
+        return switch (cell.getCellType()) {
+            case STRING -> cell.getStringCellValue();
+            case NUMERIC -> String.valueOf((long) cell.getNumericCellValue());
+            // Para cualquier otro tipo (fórmula, booleano, etc.), devolvemos una cadena vacía.
+            default -> "";
+        };
     }
 }
