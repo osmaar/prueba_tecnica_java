@@ -53,8 +53,8 @@ class ContactServiceTest {
 
         // Assert: Verificamos que el resultado sea el esperado
         assertEquals(1, matches.size());
-        assertEquals("Alta", matches.get(0).getPrecision());
-        assertEquals(90, matches.get(0).getScore());
+        assertEquals("Alta", matches.getFirst().getPrecision());
+        assertEquals(90, matches.getFirst().getScore());
     }
 
     @Test
