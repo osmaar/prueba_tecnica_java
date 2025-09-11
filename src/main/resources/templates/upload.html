@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Buscador de Duplicados</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+</head>
+<body>
+<div class="container">
+    <h2>Subir Archivo (.xlsx)</h2>
+    <form method="POST" action="/upload" enctype="multipart/form-data">
+        <input type="file" name="file" accept=".xlsx" required>
+        <button type="submit">Procesar</button>
+    </form>
+    <hr style="margin: 20px 0;">
+    <h3>Resultados</h3>
+    <div th:if="${successMessage}" class="message success" th:text="${successMessage}"></div>
+    <div th:if="${errorMessage}" class="message error" th:text="${errorMessage}"></div>
+    <div th:if="${duplicates != null and not #lists.isEmpty(duplicates)}">
+        <table class="results-table">
+            <thead>
+            <tr>
+                <th>ContactID Origen</th>
+                <th>ContactID Coincidencia</th>
+                <th>Precisión</th>
+                <th>Puntuación</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="match : ${duplicates}">
+                <td th:text="${match.contactIdOrigen}"></td>
+                <td th:text="${match.contactIdCoincidencia}"></td>
+                <td th:text="${match.precision}"></td>
+                <td th:text="${match.score}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div th:if="${duplicates == null or #lists.isEmpty(duplicates)}">
+        <p>Sube un archivo para ver los resultados.</p>
+    </div>
+</div>
+</body>
+</html>
