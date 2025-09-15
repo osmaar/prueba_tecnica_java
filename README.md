@@ -1,22 +1,16 @@
-# Prueba técnica de duplicados ✨
+# Prueba técnica de duplicados
 
-Aplicación web desarrollada con Spring Boot y Thymeleaf para identificar contactos duplicados dentro de un archivo Excel. El procesamiento se realiza completamente en memoria, aplicando una lógica de puntuación personalizable.
-
-![Java](https://img.shields.io/badge/Java-21-blue)
-![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.x-brightgreen)
-![Maven](https://img.shields.io/badge/Maven-3.8%2B-blueviolet)
-
+Esta es una propuesta en Web Mono ya que la prueba técnica no especifica si debía realizarse como aplicación de consola, Java nativo o con el uso de algún framework.
+Mi enfoque fue implementarla como aplicación web con Thymeleaf y Spring Boot, cumpliendo con la restricción de no usar base de datos y procesar todo en memoria.
 ---
 ## Descripción General 📖
 
 Este proyecto es una solución al desafío de encontrar posibles contactos duplicados en un gran conjunto de datos proporcionado en formato `.xlsx`. La aplicación ofrece una interfaz web simple para que el usuario suba el archivo. Una vez subido, el backend lo procesa en memoria, compara cada contacto con todos los demás y asigna una puntuación de similitud basada en criterios predefinidos. Finalmente, los resultados se presentan en una tabla clara que muestra los pares de contactos duplicados, la precisión de la coincidencia y la puntuación obtenida.
 
-
-
 ---
-## Características Principales 🚀
+## Características Principales
 
-* **Interfaz Web Intuitiva:** Formulario de subida de archivos construido con Thymeleaf y CSS.
+* **Interfaz Web:** Formulario de subida de archivos construido con Thymeleaf y CSS.
 * **Procesamiento de Archivos Excel:** Lectura de datos de archivos `.xlsx` utilizando la librería Apache POI.
 * **Detección en Memoria:** Toda la lógica se ejecuta en memoria, sin necesidad de una base de datos.
 * **Lógica de Puntuación Personalizable:** El `ContactService` implementa un sistema de puntuación para determinar la probabilidad de duplicado:
