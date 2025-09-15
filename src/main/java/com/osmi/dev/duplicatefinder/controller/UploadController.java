@@ -26,13 +26,33 @@ public class UploadController {
         this.contactService = contactService;
     }
 
+    /**
+     * Muestra el formulario de carga.
+     * Retorna el nombre de la vista (upload.html con Thymeleaf).
+     */
     @GetMapping("/")
     public String showUploadForm() {
-        return "upload"; // Devuelve el nombre del archivo HTML (upload.html)
+        return "upload"; 
     }
 
+    /**
+     * Recibe el archivo XLSX, lo parsea a contactos y ejecuta la detección de duplicados.
+     * Usa RedirectAttributes para mandar mensajes flash y resultados a la misma vista.
+     *
+     * Flujo:
+     * 1) Valida que el archivo exista y sea .xlsx
+     * 2) Lee el InputStream y crea la lista de Contact
+     * 3) Ejecuta findDuplicates
+     * 4) Guarda resultados/mensajes en flash y redirige a "/"
+     *
+     * @param file archivo subido por el usuario (esperado .xlsx)
+     * @param redirectAttributes contenedor de mensajes flash para la redirección
+     * @return redirección al formulario
+     */
     @PostMapping("/upload")
     public String handleFileUpload(@RequestParam("file") MultipartFile file, RedirectAttributes redirectAttributes) {
+
+        // Validaciones básicas de carga
         if (file.isEmpty()) {
             redirectAttributes.addFlashAttribute("errorMessage", "Por favor, selecciona un archivo para subir.");
             return "redirect:/";
