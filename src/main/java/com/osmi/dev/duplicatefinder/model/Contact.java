@@ -13,6 +13,8 @@ public class Contact {
     private String codigoPostal;
     private String direccion;
 
+    // Getters and Setters
+
     public String getEmail() {
         return email;
     }
