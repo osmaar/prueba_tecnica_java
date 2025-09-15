@@ -38,6 +38,7 @@ public class ContactService {
         }
         return matches;
     }
+
     /**
      * Calcula una puntuación de similitud entre dos contactos.
      */
@@ -101,7 +102,6 @@ public class ContactService {
         return switch (cell.getCellType()) {
             case STRING -> cell.getStringCellValue();
             case NUMERIC -> String.valueOf((long) cell.getNumericCellValue());
-            // Para cualquier otro tipo (fórmula, booleano, etc.), devolvemos una cadena vacía.
             default -> "";
         };
     }
